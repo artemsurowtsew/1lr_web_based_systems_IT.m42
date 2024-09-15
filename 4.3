@@ -1,0 +1,36 @@
+<?php  class Coor{
+
+private $text, $login, $password;
+
+function __construct($text,$login,$password) // function for setting name  
+
+{  
+
+$this->text=$text; //set some “text” to this “text”;
+$this->login=$login;//set "login" to this login;
+$this->password=$password; //set "password" to this password;
+}
+
+function Getdata()  //function for getting name
+
+{  
+
+echo "<p>Name: ".$this->text."</p>"; // printing name  
+echo "<p>Login:".$this->login."</p>"; // printing login 
+echo "<p>Password:".$this->password."<br></p>"; // printing login 
+}  
+
+function __destruct() {
+    echo "Objects are deleted!";
+}
+
+
+} 
+
+$object = new Coor("Nick","nick2005@gmail.com","nickAreB3st0505"); //creating “Coor” object
+
+$object->Getdata(); //function call
+
+unset($object);
+
+?>
