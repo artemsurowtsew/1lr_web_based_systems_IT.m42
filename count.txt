@@ -1,4 +1,2 @@
-15.09.2024.Surovtsev_Artem_ITm-42
 New Lab
 Web-oriented system 
-PHP Language

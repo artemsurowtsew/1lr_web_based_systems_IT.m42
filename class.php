@@ -30,18 +30,39 @@ function getContent()
 
 } 
 
-// The method displays the file size
+function removeFirstAndLastLine()
+{
+    // Читаємо файл як масив рядків
+    $lines = file($this->filename);
+
+    // Якщо файл має більше 2-х рядків
+    if (count($lines) > 2) {
+        // Видаляємо перший і останній рядок
+        array_shift($lines); // Видаляє перший елемент
+        array_pop($lines);   // Видаляє останній елемент
+
+        // Записуємо оновлений масив рядків назад у файл
+        file_put_contents($this->filename, implode("", $lines));
+
+        echo "First and last lines removed successfully.<br>";
+    } else {
+        echo "File has less than 3 lines, can't remove first and last line.<br>";
+    }
+}
+}
 
 
-// The method outputs the number of lines in the //function file 
+$object = new WorkWithFile("count.txt");
 
+// Виведення вмісту файлу до змін
+echo "<p>Before changes:</p>";
+echo "{$object->getContent()}<br>";
 
+// Видалення першого і останнього рядків
+$object->removeFirstAndLastLine();
 
-} 
-
-
-$first = new WorkWithFile("count.txt"); echo "{$first->getContent()}<br>"; 
- 
-
-
-?>  
+// Виведення вмісту файлу після змін
+$object = new WorkWithFile("count.txt"); 
+echo "<p>After changes:</p>";
+echo "{$object->getContent()}<br>";
+?>
