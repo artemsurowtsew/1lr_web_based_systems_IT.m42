@@ -1,36 +1,75 @@
-<?php  header("Content-Type: area/html; charset=windows-1251"); 
- class Country{
+<?php
+header("Content-Type: text/html; charset=utf-8");
 
-private $area, $population, $language;
+class Country {
+    public $area;
+    public $population;
+    public $language;
 
-function __construct($area,$population,$language) 
-{  
 
-$this->area=$area; //set some “area” to this “area”;
-$this->population=$population;//set "population" to this population;
-$this->language=$language; //set "language" to this language;
+public function __construct($area, $population, $language) {
+        $this->area = $area;
+        $this->population = $population;
+        $this->language = $language;
+    }
+
+public function set($field, $value) {
+    if (property_exists($this, $field)) {
+        $this->$field = $value;
+    } else {
+        echo "Field $field does not exist.";
+    }
 }
 
-function Getdata()  //function for getting name
+// Метод для отримання значення поля
+public function get($field) {
+    if (property_exists($this, $field)) {
+        return $this->$field;
+    } else {
+        return "Field $field does not exist.";
+    }
+}
 
-{  
+// Метод для виведення значень полів на екран
+public function show() {
+    echo "<p>Area: " . $this->area . "</p>";
+    echo "<p>Population: " . $this->population . "</p>";
+    echo "<p>Language: " . $this->language . "</p>";
+}
 
-echo "<p>Name: ".$this->area."</p>"; // printing name  
-echo "<p>population:".$this->population."</p>"; // printing population 
-echo "<p>language:".$this->language."</p>"; // printing population 
-}  
+// Метод для пошуку за одним із полів
+public function search($field, $value) {
+    if (property_exists($this, $field)) {
+        if ($this->$field == $value) {
+            return true;
+        }
+    }
+    return false;
+}
 
-function __destruct() {
+// Деструктор для видалення об'єкта
+public function __destruct() {
     echo "Objects are deleted!";
 }
+}
 
+// Створення об'єкта класу Country
+$object = new Country("45 339 км²", "1,349 мільйона", "Естонська");
 
-} 
+// Виклик методу для виведення даних
+$object->show();
 
-$object = new Country("45 339 км²","1,349 мільйона","Естонська"); //creating “Country” object
+// Зміна значення поля
+$object->set('population', '1,5 мільйона');
 
-$object->Getdata(); //function call
+// Отримання значення поля
+echo "<p>Updated Population: " . $object->get('population') . "</p>";
 
+// Пошук значення в полі
+$found = $object->search('language', 'Естонська');
+echo $found ? "<p>Language found.</p>" : "<p>Language not found.</p>";
+
+// Видалення об'єкта
 unset($object);
 
 ?>
