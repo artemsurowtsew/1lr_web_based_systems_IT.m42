@@ -1,5 +1,5 @@
 <?php  header("Content-Type: area/html; charset=windows-1251"); 
- class Coor{
+ class Country{
 
 private $area, $population, $language;
 
@@ -27,7 +27,7 @@ function __destruct() {
 
 } 
 
-$object = new Coor("Nick","nick2005@gmail.com","nickAreB3st0505"); //creating “Coor” object
+$object = new Country("45 339 км²","1,349 мільйона","Естонська"); //creating “Country” object
 
 $object->Getdata(); //function call
 
