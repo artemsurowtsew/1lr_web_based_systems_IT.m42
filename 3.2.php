@@ -91,7 +91,7 @@ $country2->show();
 $country3->show();
 
 // Зміна значення приватного поля capital через публічний метод set
-$country1->set('capital', 'Новий Таллінн');
+$country1->set('capital', 'Інкапсульоване значення столиці Естонії: Таллінн');
 
 // Отримання значення приватного поля capital через публічний метод get
 echo "<p>Updated Capital for Country1: " . $country1->get('capital') . "</p>";
